@@ -67,7 +67,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="机器人,算法," />
 
 
 
@@ -78,13 +78,23 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="XINGYES的个人博客">
-<meta property="og:url" content="http://hewangxing.gitee.io/tags/linux/index.html">
+<meta name="description" content="卡尔曼滤波对机器人研究来说是一个比较常用的方法，这篇博客主要根据CS373: Artificial Intelligence for Robotics这门公开课的内容做简要的介绍。 高斯分布　　高斯分布是一个连续的单峰图像（continuous, uni-model)，如下图所示，表示的是一个概率分布。高斯分布可以通过均值μ和方差σ^2来共同确定它的位置和形状。当x=μ时，f(x)有最大值；σ">
+<meta name="keywords" content="机器人,算法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="卡尔曼滤波">
+<meta property="og:url" content="http://hewangxing.gitee.io/卡尔曼滤波/index.html">
 <meta property="og:site_name" content="XINGYES的个人博客">
+<meta property="og:description" content="卡尔曼滤波对机器人研究来说是一个比较常用的方法，这篇博客主要根据CS373: Artificial Intelligence for Robotics这门公开课的内容做简要的介绍。 高斯分布　　高斯分布是一个连续的单峰图像（continuous, uni-model)，如下图所示，表示的是一个概率分布。高斯分布可以通过均值μ和方差σ^2来共同确定它的位置和形状。当x=μ时，f(x)有最大值；σ">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://hewangxing.gitee.io/卡尔曼滤波/20180818144444.png">
+<meta property="og:image" content="http://hewangxing.gitee.io/卡尔曼滤波/20180819211040.png">
+<meta property="og:image" content="http://hewangxing.gitee.io/卡尔曼滤波/20180819212025.png">
+<meta property="og:image" content="http://hewangxing.gitee.io/卡尔曼滤波/20180819213244.png">
+<meta property="og:updated_time" content="2018-08-19T14:31:19.070Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="XINGYES的个人博客">
+<meta name="twitter:title" content="卡尔曼滤波">
+<meta name="twitter:description" content="卡尔曼滤波对机器人研究来说是一个比较常用的方法，这篇博客主要根据CS373: Artificial Intelligence for Robotics这门公开课的内容做简要的介绍。 高斯分布　　高斯分布是一个连续的单峰图像（continuous, uni-model)，如下图所示，表示的是一个概率分布。高斯分布可以通过均值μ和方差σ^2来共同确定它的位置和形状。当x=μ时，f(x)有最大值；σ">
+<meta name="twitter:image" content="http://hewangxing.gitee.io/卡尔曼滤波/20180818144444.png">
 
 
 
@@ -114,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="http://hewangxing.gitee.io/tags/linux/"/>
+  <link rel="canonical" href="http://hewangxing.gitee.io/卡尔曼滤波/"/>
 
 
 
 
 
-  <title>Tag: linux | XINGYES的个人博客</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>卡尔曼滤波 | XINGYES的个人博客</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -139,7 +149,7 @@
     
   
 
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left ">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -287,82 +297,220 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h2>linux<small>Tag</small>
-        </h2>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://hewangxing.gitee.io/卡尔曼滤波/">
 
-      <h3 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="hewangxing">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar1.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XINGYES的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/Linux进阶命令/" itemprop="url">
-              
-                <span itemprop="name">Linux进阶命令</span>
-              
-            </a>
         
-      </h3>
+          <h2 class="post-title" itemprop="name headline">卡尔曼滤波</h2>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-05-05T23:50:46+08:00"
-              content="2018-05-05" >
-          05-05
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-18T14:05:57+08:00">
+                2018-08-18
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/编程/" itemprop="url" rel="index">
+                    <span itemprop="name">编程</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/卡尔曼滤波/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/卡尔曼滤波/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i> View
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-        
+      
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-            <a class="post-title-link" href="/Linux常用命令/" itemprop="url">
-              
-                <span itemprop="name">Linux常用命令</span>
-              
-            </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-05-05T23:50:28+08:00"
-              content="2018-05-05" >
-          05-05
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+      
+        <p>　　卡尔曼滤波对机器人研究来说是一个比较常用的方法，这篇博客主要根据CS373: Artificial Intelligence for Robotics这门公开课的内容做简要的介绍。</p>
+<h3 id="高斯分布"><a href="#高斯分布" class="headerlink" title="高斯分布"></a>高斯分布</h3><p>　　高斯分布是一个连续的单峰图像（continuous, uni-model)，如下图所示，表示的是一个概率分布。高斯分布可以通过均值μ和方差σ^2来共同确定它的位置和形状。当x=μ时，f(x)有最大值；σ^2越大，图像越矮胖，不确定性越大，反之亦然。<br><img src="/卡尔曼滤波/20180818144444.png" title="高斯分布示意图"></p>
+<p>　　用数学公式描述如下：<br>$$ f(x) = \frac{1}{\sqrt{2πσ^2}} exp^{-\frac12 \frac{(x-μ)^2}{σ^2}} $$</p>
+<p>$$ \int_{-\infty}^\infty f(x)dx = 1 $$</p>
+<h4 id="Measure-Gaussian"><a href="#Measure-Gaussian" class="headerlink" title="Measure Gaussian"></a>Measure Gaussian</h4><p>　　在prior Gaussian的基础上，我们结合measure Gaussian就可以得到一个new Gaussian, 如下图所示：<br><img src="/卡尔曼滤波/20180819211040.png" title="measurement update">　<br>　　用数学公式描述如下：<br>$$ μ^{‘}= \frac{μr^2+vσ^2}{r^2+σ^2} $$</p>
+<p>$$ σ^{2’}= \frac{1}{\frac{1}{r^2}+\frac{1}{σ^2}} $$</p>
+<h4 id="Predict-Gaussian"><a href="#Predict-Gaussian" class="headerlink" title="Predict Gaussian"></a>Predict Gaussian</h4><p>　　在prior Gaussian的基础上，我们可以得到一个motion Gaussian，如下图所示：<br><img src="/卡尔曼滤波/20180819212025.png" title="predict update"><br>　　用数学公式描述如下：<br>$$ μ^{‘}= μ + v $$</p>
+<p>$$ σ^{2’}= σ^2 + r^2 $$</p>
+<h3 id="卡尔曼滤波"><a href="#卡尔曼滤波" class="headerlink" title="卡尔曼滤波"></a>卡尔曼滤波</h3><p>　　卡尔曼滤波是一个动态更新的循环过程，包括测量和预测两个部分，我们可以通过线性代数来描述卡尔曼滤波的计算过程（包括一维和二维），如下：<br><img src="/卡尔曼滤波/20180819213244.png" title="kalman filter in linear algebra"><br>　　其中，F表示状态转换矩阵，H表示测量函数。</p>
+<h4 id="测量部分"><a href="#测量部分" class="headerlink" title="测量部分"></a>测量部分</h4><p>$$ x^{‘}= Fx + u $$</p>
+<p>$$ P^{‘}= F•P•F^T $$</p>
+<h4 id="预测部分"><a href="#预测部分" class="headerlink" title="预测部分"></a>预测部分</h4><p>$$ y = Z - H•x $$</p>
+<p>$$ S = H•P•H^T + R $$</p>
+<p>$$ K = P•H•S^{-1} $$</p>
+<p>$$ x^{‘}= x + (K•y) $$</p>
+<p>$$ P^{‘}= (I - K•H)•P $$<br>　　其中， x表示状态的估计值，u表示运动矢量，P是用于表示不确定性的协方差矩阵，Z表示测量值， R表示测量，I表示单位矩阵。举个例子来说明这些矩阵应该如何取值：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 2-D</span></span><br><span class="line">measurements = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line">x = matrix([[<span class="number">0.</span>], [<span class="number">0.</span>]]) <span class="comment"># initial state(location and velocity)</span></span><br><span class="line">P = matrix([[<span class="number">1000.</span>, <span class="number">0.</span>], [<span class="number">0.</span>, <span class="number">1000.</span>]]) <span class="comment"># initial uncertainty</span></span><br><span class="line">u = matrix([[<span class="number">0.</span>], [<span class="number">0.</span>]]) <span class="comment"># external motion</span></span><br><span class="line">F = matrix([[<span class="number">1.</span>, <span class="number">1.</span>], [<span class="number">0</span>, <span class="number">1.</span>]]) <span class="comment"># next state function</span></span><br><span class="line">H = matrix([[<span class="number">1.</span>, <span class="number">0.</span>]]) <span class="comment"># measurement function</span></span><br><span class="line">R = matrix([[<span class="number">1.</span>]]) <span class="comment"># measurement uncertainty</span></span><br><span class="line">I = matrix([[<span class="number">1.</span>, <span class="number">0.</span>], [<span class="number">0.</span>, <span class="number">1.</span>]]) <span class="comment"># identity matrix</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 4-D</span></span><br><span class="line">measurements = [[<span class="number">1.</span>, <span class="number">17.</span>], [<span class="number">1.</span>, <span class="number">15.</span>], [<span class="number">1.</span>, <span class="number">13.</span>], [<span class="number">1.</span>, <span class="number">11.</span>]]</span><br><span class="line">initial_xy = [<span class="number">1.</span>, <span class="number">19.</span>]</span><br><span class="line">dt = <span class="number">0.1</span></span><br><span class="line">x = matrix([[initial_xy[<span class="number">0</span>]], [initial_xy[<span class="number">1</span>]], [<span class="number">0.</span>], [<span class="number">0.</span>]]) <span class="comment"># initial state (location and velocity)</span></span><br><span class="line">u = matrix([[<span class="number">0.</span>], [<span class="number">0.</span>], [<span class="number">0.</span>], [<span class="number">0.</span>]]) <span class="comment"># external motion</span></span><br><span class="line"><span class="comment"># initial uncertainty: 0 for positions x and y, 1000 for the two velocities</span></span><br><span class="line">P =  matrix([[<span class="number">0.</span>, <span class="number">0.</span>, <span class="number">0.</span>, <span class="number">0.</span>], </span><br><span class="line">             [<span class="number">0.</span>, <span class="number">0.</span>, <span class="number">0.</span>, <span class="number">0.</span>], </span><br><span class="line">             [<span class="number">0.</span>, <span class="number">0.</span>, <span class="number">1000.</span>, <span class="number">0.</span>], </span><br><span class="line">             [<span class="number">0.</span>, <span class="number">0.</span>, <span class="number">0.</span>, <span class="number">1000.</span>]]) </span><br><span class="line"><span class="comment"># next state function: generalize the 2d version to 4d</span></span><br><span class="line">F =  matrix([[<span class="number">1.</span>, <span class="number">0.</span>, dt, <span class="number">0</span>], </span><br><span class="line">             [<span class="number">0.</span>, <span class="number">1.</span>, <span class="number">0.</span>, dt], </span><br><span class="line">             [<span class="number">0.</span>, <span class="number">0.</span>, <span class="number">1.</span>, <span class="number">0.</span>], </span><br><span class="line">             [<span class="number">0.</span>, <span class="number">0.</span>, <span class="number">0.</span>, <span class="number">1.</span>]]) </span><br><span class="line"><span class="comment"># measurement function: reflect the fact that we observe x and y but not the two velocities</span></span><br><span class="line">H =  matrix([[<span class="number">1.</span>, <span class="number">0.</span>, <span class="number">0.</span>, <span class="number">0.</span>], </span><br><span class="line">             [<span class="number">0.</span>, <span class="number">1.</span>, <span class="number">0.</span>, <span class="number">0.</span>]]) </span><br><span class="line"><span class="comment"># measurement uncertainty: use 2x2 matrix with 0.1 as main diagonal</span></span><br><span class="line">R =  matrix([[<span class="number">0.1</span>, <span class="number">0.</span>], </span><br><span class="line">             [<span class="number">0.</span>, <span class="number">0.1</span>]])</span><br><span class="line">I =  matrix([[<span class="number">1.</span>, <span class="number">0.</span>, <span class="number">0.</span>, <span class="number">0</span>], </span><br><span class="line">             [<span class="number">0.</span>, <span class="number">1.</span>, <span class="number">0.</span>, <span class="number">0.</span>], </span><br><span class="line">             [<span class="number">0.</span>, <span class="number">0.</span>, <span class="number">1.</span>, <span class="number">0.</span>], </span><br><span class="line">             [<span class="number">0.</span>, <span class="number">0.</span>, <span class="number">0.</span>, <span class="number">1.</span>]]) <span class="comment"># 4d identity matrix</span></span><br></pre></td></tr></table></figure></p>
+<p>　　卡尔曼滤波常用于传感器的数据融合和物体追踪之类的问题，而且由于计算量不大，被广泛应用于工程领域。</p>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:</strong>
+    hewangxing
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link:</strong>
+    <a href="http://hewangxing.gitee.io/卡尔曼滤波/" title="卡尔曼滤波">http://hewangxing.gitee.io/卡尔曼滤波/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice: </strong>
+    All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> unless stating additionally.
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/机器人/" rel="tag"># 机器人</a>
+          
+            <a href="/tags/算法/" rel="tag"># 算法</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/记录我的入职拓展培训/" rel="next" title="记录我的入职拓展培训">
+                <i class="fa fa-chevron-left"></i> 记录我的入职拓展培训
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -370,6 +518,17 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
+    </div>
+
+  
+
+
 
         </div>
         
@@ -390,8 +549,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -501,6 +669,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#高斯分布"><span class="nav-number">1.</span> <span class="nav-text">高斯分布</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Measure-Gaussian"><span class="nav-number">1.1.</span> <span class="nav-text">Measure Gaussian</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Predict-Gaussian"><span class="nav-number">1.2.</span> <span class="nav-text">Predict Gaussian</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#卡尔曼滤波"><span class="nav-number">2.</span> <span class="nav-text">卡尔曼滤波</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#测量部分"><span class="nav-number">2.1.</span> <span class="nav-text">测量部分</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#预测部分"><span class="nav-number">2.2.</span> <span class="nav-text">预测部分</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -655,6 +839,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
@@ -701,6 +889,30 @@
 
     
 
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitmint({
+            id: decodeURI(window.location.pathname), 
+            owner: 'hewangxing',
+            repo: 'gitment-comments',
+            
+            lang: "" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
+            
+            oauth: {
+            
+            
+                client_secret: '501b23c63d93d17a104f5889a63503b84ca93a0b',
+            
+                client_id: 'af72ab3d4386526834fc'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      renderGitment();
+      
+      </script>
     
 
 
@@ -1099,13 +1311,13 @@
       var articles = db.collection('articles')
 
       //https://hexo.io/zh-tw/docs/variables.html
-      var isPost = ''.length > 0
+      var isPost = '卡尔曼滤波'.length > 0
       var isArchive = '' === 'true'
       var isCategory = ''.length > 0
       var isTag = ''.length > 0
 
       if (isPost) { //is article page
-        var title = ''
+        var title = '卡尔曼滤波'
         var doc = articles.doc(title)
 
         getCount(doc, true).then(appendCountTo($('.post-meta')))
@@ -1113,7 +1325,7 @@
       else if (!isArchive && !isCategory && !isTag) { //is index page
         var titles = [] //array to titles
 
-        var postsstr = 'titles.push("Linux进阶命令");titles.push("Linux常用命令");' //if you have a better way to get titles of posts, please change it
+        var postsstr = '' //if you have a better way to get titles of posts, please change it
         eval(postsstr)
 
         var promises = titles.map(function (title) {

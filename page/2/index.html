@@ -7,7 +7,7 @@
 
 <html class="theme-next gemini use-motion" lang="zh-CN">
 <head>
-  <meta charset="UTF-8"/>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 <meta name="theme-color" content="#222">
@@ -120,7 +120,7 @@
 
 
 
-  <title>XINGYES的个人博客 - Stay hungry, Stay foolish!</title>
+  <title>XINGYES的个人博客 - Stay hungry, Stay foolish!</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -139,7 +139,7 @@
     
   
 
-  <div class="container sidebar-position-left 
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left 
   page-home">
     <div class="headband"></div>
 
@@ -288,6 +288,154 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://hewangxing.gitee.io/STM32之SPI通信/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="hewangxing">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar1.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XINGYES的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/STM32之SPI通信/" itemprop="url">STM32之SPI通信</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-07T14:42:22+08:00">
+                2018-05-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/电子/" itemprop="url" rel="index">
+                    <span itemprop="name">电子</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          之前一直对SPI通信一知半解，所以想抽空把它搞得明白一些。考虑到之前是结合Flash芯片来学的，十分不直观，而且主要把时间和精力都花在Flash芯片的datasheet和驱动上了，SPI通信也没学好。所以这次就考虑用4位数码管显示模块，模块是直接买的现成的，如下图所示，这样可以简化操作，把精力聚焦到
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/STM32之SPI通信/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
     
       
 
@@ -1093,7 +1241,7 @@ ls -a -l    ls -l -a    ls -
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-count">16</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -1119,7 +1267,7 @@ ls -a -l    ls -l -a    ls -
 				
 				  <a href="/tags/index.html">
 				
-				  <span class="site-state-item-count">10</span>
+				  <span class="site-state-item-count">12</span>
 				  <span class="site-state-item-name">tags</span>
 				</a>
 			  </div>
@@ -1796,7 +1944,7 @@ ls -a -l    ls -l -a    ls -
       else if (!isArchive && !isCategory && !isTag) { //is index page
         var titles = [] //array to titles
 
-        var postsstr = 'titles.push("C语言之递归");titles.push("Linux进阶命令");titles.push("Linux常用命令");titles.push("位操作在寄存器中的作用");titles.push("内存管理之结构体");' //if you have a better way to get titles of posts, please change it
+        var postsstr = 'titles.push("STM32之SPI通信");titles.push("C语言之递归");titles.push("Linux进阶命令");titles.push("Linux常用命令");titles.push("位操作在寄存器中的作用");titles.push("内存管理之结构体");' //if you have a better way to get titles of posts, please change it
         eval(postsstr)
 
         var promises = titles.map(function (title) {
@@ -1836,6 +1984,28 @@ ls -a -l    ls -l -a    ls -
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
 
   
 

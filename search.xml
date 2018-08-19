@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[卡尔曼滤波]]></title>
+    <url>%2F%E5%8D%A1%E5%B0%94%E6%9B%BC%E6%BB%A4%E6%B3%A2%2F</url>
+    <content type="text"><![CDATA[卡尔曼滤波对机器人研究来说是一个比较常用的方法，这篇博客主要根据CS373: Artificial Intelligence for Robotics这门公开课的内容做简要的介绍。 高斯分布 高斯分布是一个连续的单峰图像（continuous, uni-model)，如下图所示，表示的是一个概率分布。高斯分布可以通过均值μ和方差σ^2来共同确定它的位置和形状。当x=μ时，f(x)有最大值；σ^2越大，图像越矮胖，不确定性越大，反之亦然。 用数学公式描述如下：$$ f(x) = \frac{1}{\sqrt{2πσ^2}} exp^{-\frac12 \frac{(x-μ)^2}{σ^2}} $$ $$ \int_{-\infty}^\infty f(x)dx = 1 $$ Measure Gaussian 在prior Gaussian的基础上，我们结合measure Gaussian就可以得到一个new Gaussian, 如下图所示： 用数学公式描述如下：$$ μ^{‘}= \frac{μr^2+vσ^2}{r^2+σ^2} $$ $$ σ^{2’}= \frac{1}{\frac{1}{r^2}+\frac{1}{σ^2}} $$ Predict Gaussian 在prior Gaussian的基础上，我们可以得到一个motion Gaussian，如下图所示： 用数学公式描述如下：$$ μ^{‘}= μ + v $$ $$ σ^{2’}= σ^2 + r^2 $$ 卡尔曼滤波 卡尔曼滤波是一个动态更新的循环过程，包括测量和预测两个部分，我们可以通过线性代数来描述卡尔曼滤波的计算过程（包括一维和二维），如下： 其中，F表示状态转换矩阵，H表示测量函数。 测量部分$$ x^{‘}= Fx + u $$ $$ P^{‘}= F•P•F^T $$ 预测部分$$ y = Z - H•x $$ $$ S = H•P•H^T + R $$ $$ K = P•H•S^{-1} $$ $$ x^{‘}= x + (K•y) $$ $$ P^{‘}= (I - K•H)•P $$ 其中， x表示状态的估计值，u表示运动矢量，P是用于表示不确定性的协方差矩阵，Z表示测量值， R表示测量，I表示单位矩阵。举个例子来说明这些矩阵应该如何取值：123456789101112131415161718192021222324252627282930313233343536# 2-Dmeasurements = [1, 2, 3]x = matrix([[0.], [0.]]) # initial state(location and velocity)P = matrix([[1000., 0.], [0., 1000.]]) # initial uncertaintyu = matrix([[0.], [0.]]) # external motionF = matrix([[1., 1.], [0, 1.]]) # next state functionH = matrix([[1., 0.]]) # measurement functionR = matrix([[1.]]) # measurement uncertaintyI = matrix([[1., 0.], [0., 1.]]) # identity matrix# 4-Dmeasurements = [[1., 17.], [1., 15.], [1., 13.], [1., 11.]]initial_xy = [1., 19.]dt = 0.1x = matrix([[initial_xy[0]], [initial_xy[1]], [0.], [0.]]) # initial state (location and velocity)u = matrix([[0.], [0.], [0.], [0.]]) # external motion# initial uncertainty: 0 for positions x and y, 1000 for the two velocitiesP = matrix([[0., 0., 0., 0.], [0., 0., 0., 0.], [0., 0., 1000., 0.], [0., 0., 0., 1000.]]) # next state function: generalize the 2d version to 4dF = matrix([[1., 0., dt, 0], [0., 1., 0., dt], [0., 0., 1., 0.], [0., 0., 0., 1.]]) # measurement function: reflect the fact that we observe x and y but not the two velocitiesH = matrix([[1., 0., 0., 0.], [0., 1., 0., 0.]]) # measurement uncertainty: use 2x2 matrix with 0.1 as main diagonalR = matrix([[0.1, 0.], [0., 0.1]])I = matrix([[1., 0., 0., 0], [0., 1., 0., 0.], [0., 0., 1., 0.], [0., 0., 0., 1.]]) # 4d identity matrix 卡尔曼滤波常用于传感器的数据融合和物体追踪之类的问题，而且由于计算量不大，被广泛应用于工程领域。]]></content>
+      <categories>
+        <category>编程</category>
+      </categories>
+      <tags>
+        <tag>机器人</tag>
+        <tag>算法</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[记录我的入职拓展培训]]></title>
     <url>%2F%E8%AE%B0%E5%BD%95%E6%88%91%E7%9A%84%E5%85%A5%E8%81%8C%E6%8B%93%E5%B1%95%E5%9F%B9%E8%AE%AD%2F</url>
     <content type="text"><![CDATA[7月20日—7月21日，伙伴们参加了所里在浙江嘉兴平湖澳多奇农庄举办的新员工拓展培训活动。此时正值盛夏，天气十分炎热，但是身着橙色服装的苍穹队伙伴们依旧热情不减，满满的活力。 经过短暂的热身之后，各队首先展开了水果“连连看”比赛的争夺，游戏规则比较简单，但考验的是团队成员的协作与智慧。各队分别派两名队员轮番上阵，不断翻开斗篷并将相同的水果揽入名下，苍穹队也不甘示弱，越战越勇，最终获得了并列第二的成绩。 下午时分，“传国玉玺”的出现引爆了“六大门派”的厮杀，这是一场胜者为王的游戏，共设立六重关卡。在队长的带领下，大家集体行动，积极献策，轻松通过了平衡钉子、叠纸杯、集体跳绳、气球承重等环节；解十字结的时候遇到了难题，但大家坚持到最后，决不放弃；成语“你画我猜”环节，一次通过，充分展现了团队成员间的默契配合。虽然时间上不占优势，没有取得较好名次，但是苍穹队秉承坚持不懈的精神，我们坚信这样做才是最棒的。 印象最深的，当属团队在晚宴上的精彩表现。我们队共准备了3个节目，大家利用休息间隙争分夺秒的准备和排练，不断的改进。小品《面试》让人捧腹，现场笑声不断；王腾杰个人独唱《动物世界》，神似薛之谦，引来大家叫好；朗诵作品大气磅礴，气势恢弘。最终我们队力压群芳获得了团队一等奖，这是大家齐心协力的结果，有点出乎意料之外，又似乎在情理之中。 第二天搭“呼吸机”吹爆气球的比赛也十分精彩，各队都玩的不亦乐乎。拓展培训好玩又有趣，磨合了大家，建立了友谊。未来在上电所的大家庭里，我们将齐心合力，梦想不止，迈向苍穹！]]></content>

@@ -7,7 +7,7 @@
 
 <html class="theme-next gemini use-motion" lang="zh-CN">
 <head>
-  <meta charset="UTF-8"/>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 <meta name="theme-color" content="#222">
@@ -90,7 +90,7 @@
 <meta property="og:image" content="http://hewangxing.gitee.io/images/20171127134102899.png">
 <meta property="og:image" content="http://hewangxing.gitee.io/images/20171127141437543.png">
 <meta property="og:image" content="http://hewangxing.gitee.io/images/20171127141452482.png">
-<meta property="og:updated_time" content="2018-05-07T07:54:43.877Z">
+<meta property="og:updated_time" content="2018-08-18T06:03:57.489Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="STM32之寄存器访问">
 <meta name="twitter:description" content="一般的寄存器访问需要通过读-改-写三步曲 和 位运算的清0置1来实现，但在stm32的编程中，通过利用它的一些优秀的特性如端口位设置/复位寄存BSRR、位绑定等，我们可以大大提升寄存器的访问速度和简化寄存器的操作。 123//一般寄存器操作：GPIOx-&amp;gt;ODR |= 0x10;  //Pin4置1GPIOx-&amp;gt;ODR &amp;amp;= ~0x10; //Pin4清0 BSRR/BRR寄存">
@@ -130,7 +130,7 @@
 
 
 
-  <title>STM32之寄存器访问 | XINGYES的个人博客</title>
+  <title>STM32之寄存器访问 | XINGYES的个人博客</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -149,7 +149,7 @@
     
   
 
-  <div class="container sidebar-position-left page-post-detail">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -566,7 +566,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-count">16</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -592,7 +592,7 @@
 				
 				  <a href="/tags/index.html">
 				
-				  <span class="site-state-item-count">10</span>
+				  <span class="site-state-item-count">12</span>
 				  <span class="site-state-item-name">tags</span>
 				</a>
 			  </div>
@@ -1337,6 +1337,28 @@
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
 
   
 
