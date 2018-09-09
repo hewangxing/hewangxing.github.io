@@ -4,6 +4,48 @@
 
     
   <url>
+    <loc>http://hewangxing.gitee.io/%E6%90%AD%E5%BB%BAUdacity%E6%97%A0%E4%BA%BA%E8%BD%A6%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/</loc>
+    <lastmod>2018-09-09T06:48:36.495Z</lastmod>
+    <data>
+        <display>
+        <title>搭建Udacity无人车开发环境</title>
+        <pubTime>2018-09-09T02:47:58.000Z</pubTime>
+        
+        <tag>python</tag>
+         
+        <tag>无人驾驶</tag>
+         
+         
+           
+             
+              <breadCrumb title="编程" url="http://hewangxing.gitee.io/categories/%E7%BC%96%E7%A8%8B/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://hewangxing.gitee.io/%E4%BD%BF%E7%94%A8Anaconda%E7%AE%A1%E7%90%86python%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/</loc>
+    <lastmod>2018-09-09T06:38:24.903Z</lastmod>
+    <data>
+        <display>
+        <title>使用Anaconda管理python开发环境</title>
+        <pubTime>2018-05-29T13:34:41.000Z</pubTime>
+        
+        <tag>python</tag>
+         
+         
+           
+             
+              <breadCrumb title="编程" url="http://hewangxing.gitee.io/categories/%E7%BC%96%E7%A8%8B/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://hewangxing.gitee.io/%E5%8D%A1%E5%B0%94%E6%9B%BC%E6%BB%A4%E6%B3%A2/</loc>
     <lastmod>2018-08-19T14:31:19.070Z</lastmod>
     <data>
@@ -179,26 +221,6 @@
         <pubTime>2018-05-05T15:49:40.000Z</pubTime>
         
         <tag>C语言</tag>
-         
-         
-           
-             
-              <breadCrumb title="编程" url="http://hewangxing.gitee.io/categories/%E7%BC%96%E7%A8%8B/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://hewangxing.gitee.io/%E4%BD%BF%E7%94%A8Anaconda%E7%AE%A1%E7%90%86python%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/</loc>
-    <lastmod>2018-08-18T06:03:57.495Z</lastmod>
-    <data>
-        <display>
-        <title>使用Anaconda管理python开发环境</title>
-        <pubTime>2018-05-29T13:34:41.000Z</pubTime>
-        
-        <tag>python</tag>
          
          
            
