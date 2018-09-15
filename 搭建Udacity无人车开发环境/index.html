@@ -90,7 +90,7 @@
 <meta property="og:image" content="http://hewangxing.gitee.io/搭建Udacity无人车开发环境/2.PNG">
 <meta property="og:image" content="http://hewangxing.gitee.io/搭建Udacity无人车开发环境/3.PNG">
 <meta property="og:image" content="http://hewangxing.gitee.io/搭建Udacity无人车开发环境/4.png">
-<meta property="og:updated_time" content="2018-09-09T08:40:56.477Z">
+<meta property="og:updated_time" content="2018-09-15T04:01:35.380Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="搭建Udacity无人车开发环境">
 <meta name="twitter:description" content="“万事开头难”，搭建开发调试环境既是垫脚石，也是拦路虎，不管是一气呵成，还是费尽周章，事后做好记录都是明智之举，可以避免不必要的重复劳动。这篇博客主要记录在win10_64位下基于CPU或者GPU搭建Udacity无人车开发环境的大致过程。 安装Anaconda　　开发python程序经常要涉及第三方库，很容易出现版本混乱和各种不兼容的问题，因此可以安装conda来帮我们管理软件包和依赖，使项">
@@ -418,7 +418,7 @@
         <p>　　“万事开头难”，搭建开发调试环境既是垫脚石，也是拦路虎，不管是一气呵成，还是费尽周章，事后做好记录都是明智之举，可以避免不必要的重复劳动。这篇博客主要记录在win10_64位下基于CPU或者GPU搭建Udacity无人车开发环境的大致过程。</p>
 <h3 id="安装Anaconda"><a href="#安装Anaconda" class="headerlink" title="安装Anaconda"></a>安装Anaconda</h3><p>　　开发python程序经常要涉及第三方库，很容易出现版本混乱和各种不兼容的问题，因此可以安装conda来帮我们管理软件包和依赖，使项目开展更加顺利。由于我只需要最基本的功能，所以选择了安装miniconda，下载地址如下：</p>
 <pre><code>https://repo.continuum.io/miniconda/Miniconda3-latest-Windows-x86_64.exe
-</code></pre><p>　　常用的conda命令可以参考[官方的用户指南][1]。</p>
+</code></pre><p>　　常用的conda命令可以参考官方的用户指南<a href="https://conda.io/docs/user-guide/tasks/manage-environments.html" target="_blank" rel="noopener">官方的用户指南</a>。</p>
 <h4 id="conda换源"><a href="#conda换源" class="headerlink" title="conda换源"></a>conda换源</h4><p>　　为了提高conda安装的速度，我们可以将conda的源换成科大或是清华的：</p>
 <pre><code>conda config --add channels https://mirrors.ustc.edu.cn/anaconda/pkgs/main/
 conda config --add channels https://mirrors.ustc.edu.cn/anaconda/pkgs/free/
@@ -471,13 +471,13 @@ dependencies:
         - moviepy
         - tensorflow==1.3.0
         - keras==2.0.9
-</code></pre><h3 id="基于GPU搭建"><a href="#基于GPU搭建" class="headerlink" title="基于GPU搭建"></a>基于GPU搭建</h3><p>　　基于GPU搭建Udacity无人车开发环境需要考虑的问题较多，但“工欲善其事，必先利其器”，使用GPU来训练神经网络模型相比CPU在速度上至少有几十倍的提升，因此该折腾还得折腾。我这里使用的GPU是Nvidia的GTX 1060 6G，在安装tensorflow-gpu之前，需要先安装CUDA Toolkit、cuDNN和必要的显卡驱动。CUDA Toolkit 和cuDNN的版本要与tensorflow-gpu相适应，可以参照Tensorflow官网[经过测试的源代码配置][2]来选择适合你的版本。我这里选择的是<strong>tensorflow_gpu-1.3.0，cuDNN v6.0和CUDA Toolkit 8.0</strong>，需要注册登陆Nvidia开发者账号才能下载。</p>
+</code></pre><h3 id="基于GPU搭建"><a href="#基于GPU搭建" class="headerlink" title="基于GPU搭建"></a>基于GPU搭建</h3><p>　　基于GPU搭建Udacity无人车开发环境需要考虑的问题较多，但“工欲善其事，必先利其器”，使用GPU来训练神经网络模型相比CPU在速度上至少有几十倍的提升，因此该折腾还得折腾。我这里使用的GPU是Nvidia的GTX 1060 6G，在安装tensorflow-gpu之前，需要先安装CUDA Toolkit、cuDNN和必要的显卡驱动。CUDA Toolkit 和cuDNN的版本要与tensorflow-gpu相适应，可以参照Tensorflow官网<a href="https://www.tensorflow.org/install/install_sources#tested_source_configurations" target="_blank" rel="noopener">经过测试的源代码配置</a>来选择适合你的版本。我这里选择的是<strong>tensorflow_gpu-1.3.0，cuDNN v6.0和CUDA Toolkit 8.0</strong>，需要注册登陆Nvidia开发者账号才能下载。</p>
 <pre><code># cuDNN v6.0 下载地址
 https://developer.nvidia.com/rdp/cudnn-archive#a-collapse6-8
 # CUDA Toolkit 8.0 下载地址
 https://developer.nvidia.com/compute/cuda/8.0/Prod2/network_installers/cuda_8.0.61_win10_network-exe
 </code></pre><img src="/搭建Udacity无人车开发环境/1.PNG" title="参照官网进行版本选择">    
-<h4 id="Visual-Studio-2012-安装"><a href="#Visual-Studio-2012-安装" class="headerlink" title="Visual Studio 2012 安装"></a>Visual Studio 2012 安装</h4><p>　　需要注意的是， 在安装CUDA Toolkit之前，还需要先安装Visual Studio，通过运行一些例程来测试GPU是否已经准备就绪。我这里下的是体积适中的<strong>Visual Studio 2012</strong>，参考博客[Microsoft Visual Studio 2012旗舰版(VS2012中文版下载)官方中文版][3]，比较杯具的是C盘空间不够，只能从D盘腾挪了几十G过来，呵呵！</p>
+<h4 id="Visual-Studio-2012-安装"><a href="#Visual-Studio-2012-安装" class="headerlink" title="Visual Studio 2012 安装"></a>Visual Studio 2012 安装</h4><p>　　需要注意的是， 在安装CUDA Toolkit之前，还需要先安装Visual Studio，通过运行一些例程来测试GPU是否已经准备就绪。我这里下的是体积适中的<strong>Visual Studio 2012</strong>，参考博客<a href="https://blog.csdn.net/wj2014/article/details/19193235" target="_blank" rel="noopener">Microsoft Visual Studio 2012旗舰版(VS2012中文版下载)官方中文版</a>，比较杯具的是C盘空间不够，只能从D盘腾挪了几十G过来，呵呵！</p>
 <pre><code># Microsoft Visual Studio 2012 下载地址
 http://download.microsoft.com/download/B/0/F/B0F589ED-F1B7-478C-849A-02C8395D0995/VS2012_ULT_chs.iso
 # 序列号：YKCW6-BPFPF-BT8C9-7DCTH-QXGWC
@@ -523,7 +523,8 @@ cd CarND-Term1-Starter-Kit-Test
 <pre><code>activate carnd-term1
 jupyter notebook test.ipynb
 </code></pre><p>　　浏览器会自动跳转到 <a href="http://localhost:8888/notebooks/test.ipynb" target="_blank" rel="noopener">http://localhost:8888/notebooks/test.ipynb</a> 网址，经测试，jupyter notebook的每个单元都能够正常执行，没有错误，说明Windows环境下的carnd-term1已经完全ok了。效果图如下：<br><img src="/搭建Udacity无人车开发环境/4.png" title="jupyter验证成功界面"></p>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>　　“好的开始是成功的一半”，搭建好开发环境后，我们就可以专注于学习无人车相关的知识和编程实现上了。That’s great!<br>　　<br>[1]: <a href="https://conda.io/docs/user-guide/tasks/manage-environments.html" target="_blank" rel="noopener">https://conda.io/docs/user-guide/tasks/manage-environments.html</a><br>[2]: <a href="https://www.tensorflow.org/install/install_sources#tested_source_configurations" target="_blank" rel="noopener">https://www.tensorflow.org/install/install_sources#tested_source_configurations</a><br>[3]: <a href="https://blog.csdn.net/wj2014/article/details/19193235" target="_blank" rel="noopener">https://blog.csdn.net/wj2014/article/details/19193235</a></p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>　　“好的开始是成功的一半”，搭建好开发环境后，我们就可以专注于学习无人车相关的知识和编程实现上了。Perfect!  
+　　</p>
 
       
     </div>
