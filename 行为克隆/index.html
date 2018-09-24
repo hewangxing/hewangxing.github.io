@@ -1,0 +1,1417 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="python,无人驾驶,CNN," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="介绍　　行为克隆就是要让无人驾驶车辆去模仿人类司机的驾驶行为，从而实现在复杂道路上的自动驾驶。之前在youtube上看到大牛用树莓派小车在真实的路面上实现了行为克隆，效果不错。不过搭建硬件比较费时费力，有一定的门槛，没有像在无人车模拟器上玩起来那么老少咸宜啦！感谢Udacity无人车驾驶团队开源的这款模拟器，可以说是很用心了。话不多说，下面开始进入正题。 　　 任务要求　　在无人车模拟器track">
+<meta name="keywords" content="python,无人驾驶,CNN">
+<meta property="og:type" content="article">
+<meta property="og:title" content="行为克隆">
+<meta property="og:url" content="http://hewangxing.gitee.io/行为克隆/index.html">
+<meta property="og:site_name" content="XINGYES的个人博客">
+<meta property="og:description" content="介绍　　行为克隆就是要让无人驾驶车辆去模仿人类司机的驾驶行为，从而实现在复杂道路上的自动驾驶。之前在youtube上看到大牛用树莓派小车在真实的路面上实现了行为克隆，效果不错。不过搭建硬件比较费时费力，有一定的门槛，没有像在无人车模拟器上玩起来那么老少咸宜啦！感谢Udacity无人车驾驶团队开源的这款模拟器，可以说是很用心了。话不多说，下面开始进入正题。 　　 任务要求　　在无人车模拟器track">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://hewangxing.gitee.io/行为克隆/1.PNG">
+<meta property="og:image" content="http://hewangxing.gitee.io/行为克隆/2.PNG">
+<meta property="og:image" content="http://hewangxing.gitee.io/行为克隆/3.PNG">
+<meta property="og:image" content="http://hewangxing.gitee.io/行为克隆/4.PNG">
+<meta property="og:updated_time" content="2018-09-24T04:55:28.113Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="行为克隆">
+<meta name="twitter:description" content="介绍　　行为克隆就是要让无人驾驶车辆去模仿人类司机的驾驶行为，从而实现在复杂道路上的自动驾驶。之前在youtube上看到大牛用树莓派小车在真实的路面上实现了行为克隆，效果不错。不过搭建硬件比较费时费力，有一定的门槛，没有像在无人车模拟器上玩起来那么老少咸宜啦！感谢Udacity无人车驾驶团队开源的这款模拟器，可以说是很用心了。话不多说，下面开始进入正题。 　　 任务要求　　在无人车模拟器track">
+<meta name="twitter:image" content="http://hewangxing.gitee.io/行为克隆/1.PNG">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://hewangxing.gitee.io/行为克隆/"/>
+
+
+
+
+
+  <title>行为克隆 | XINGYES的个人博客</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">XINGYES的个人博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">Stay hungry, Stay foolish!</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
+            
+            Sitemap
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://hewangxing.gitee.io/行为克隆/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="hewangxing">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar1.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XINGYES的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">行为克隆</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-24T11:02:12+08:00">
+                2018-09-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/编程/" itemprop="url" rel="index">
+                    <span itemprop="name">编程</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/行为克隆/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/行为克隆/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i> View
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p>　　行为克隆就是要让无人驾驶车辆去模仿人类司机的驾驶行为，从而实现在复杂道路上的自动驾驶。之前在youtube上看到大牛用树莓派小车在真实的路面上实现了行为克隆，效果不错。不过搭建硬件比较费时费力，有一定的门槛，没有像在无人车模拟器上玩起来那么老少咸宜啦！感谢Udacity无人车驾驶团队开源的这款模拟器，可以说是很用心了。话不多说，下面开始进入正题。
+　　</p>
+<h3 id="任务要求"><a href="#任务要求" class="headerlink" title="任务要求"></a>任务要求</h3><p>　　在无人车模拟器track1的Training Mode下手动驾驶车辆采集足够多的训练数据，搭建合适的神经网络模型并加载数据进行训练，训练完成后在Autonoumous Mode下让车辆在跑道上保持自动驾驶不少于一圈。<br><img src="/行为克隆/1.PNG" title="无人车模拟器登陆页面"></p>
+<h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><p>　　参照我的<a href="https://hewangxing.github.io/%E6%90%AD%E5%BB%BAUdacity%E6%97%A0%E4%BA%BA%E8%BD%A6%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/" target="_blank" rel="noopener">搭建Udacity无人车开发环境</a>这篇博客搭建所需开发环境，如果之前已搭建成功可以直接跳过。<br>　　下载无人车模拟器和工程的启动代码：</p>
+<pre><code># 无人车模拟器
+https://d17h27t6h515a5.cloudfront.net/topher/2017/February/58ae4419_windows-sim/windows-sim.zip
+# 工程启动代码
+git clone https://github.com/udacity/CarND-Behavioral-Cloning-P3.git
+</code></pre><h3 id="采集数据"><a href="#采集数据" class="headerlink" title="采集数据"></a>采集数据</h3><p>　　将路径选择在工程目录下，点击<strong>”记录数据”按钮</strong>并沿着跑道track1手动驾驶几圈（注意要让车辆保持在跑道中间平稳的驾驶），结束以后需要再次点击<strong>“记录数据”按钮</strong>回放录像才能成功捕获数据，切记！如果经过训练后的车辆自动驾驶偏离了跑道，还需要具体原因具体分析再补充相应数据。<br>　　活动的数据包括车辆3个前置摄像头采集的图像数据、方向盘角度(steering angle)、油门(throttle)、刹车(brake)和行驶速度(speed)，我们主要使用center摄像头采集的图像作为<strong>feature</strong>, 方向盘角度(steering angle)作为<strong>label</strong>。<br><img src="/行为克隆/2.PNG" title="csv格式文件"></p>
+<h3 id="加载数据"><a href="#加载数据" class="headerlink" title="加载数据"></a>加载数据</h3><p>　　加载driving_log.csv文件，获得图片的文件名然后到IMG文件夹下读取相应的图片images，此外还要获取对应的方向盘角度measurements。<br>　　<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> csv</span><br><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"><span class="comment"># 读取driving_log.csv的每一行</span></span><br><span class="line">lines = []</span><br><span class="line"><span class="keyword">with</span> open(<span class="string">'.\\track1_data\\driving_log.csv'</span>) <span class="keyword">as</span> csv_file:</span><br><span class="line">	reader = csv.reader(csv_file)</span><br><span class="line">	<span class="keyword">for</span> line <span class="keyword">in</span> reader:</span><br><span class="line">		lines.append(line)</span><br><span class="line">		</span><br><span class="line"><span class="comment"># 读取center摄像头采集的图片和方向盘角度</span></span><br><span class="line">images = []</span><br><span class="line">measurements = []</span><br><span class="line"><span class="keyword">for</span> line <span class="keyword">in</span> lines:</span><br><span class="line">	path = line[<span class="number">0</span>]</span><br><span class="line">	filename = path.split(<span class="string">'\\'</span>)[<span class="number">-1</span>]</span><br><span class="line">	current_path = <span class="string">'.\\track1_data\\IMG\\'</span> + filename</span><br><span class="line">	image = cv2.imread(current_path)</span><br><span class="line">	images.append(image)</span><br><span class="line">	measurement = float(line[<span class="number">3</span>])</span><br><span class="line">	measurements.append(measurement)</span><br><span class="line"></span><br><span class="line">X_train = np.array(images)</span><br><span class="line">y_train = np.array(measurements)</span><br></pre></td></tr></table></figure></p>
+<h3 id="搭建模型"><a href="#搭建模型" class="headerlink" title="搭建模型"></a>搭建模型</h3><p>　　我们主要采用的是端到端的无人驾驶模型，具体可以参考Nvidia的<a href="https://images.nvidia.com/content/tegra/automotive/images/2016/solutions/pdf/end-to-end-dl-using-px.pdf" target="_blank" rel="noopener">End to End Learning for Self-Driving Cars</a>这篇论文， 论文中只要看懂下面这张图就可以了：<br><img src="/行为克隆/3.PNG" title="End to End Learning Model"><br>　　核心代码是用keras实现的，一目了然，共包括5个卷积网络和4个全连接网络。为了防止过拟合，我在卷积层之间还加了Dropout层。<br>　　<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> keras.models <span class="keyword">import</span> Sequential</span><br><span class="line"><span class="keyword">from</span> keras.layers <span class="keyword">import</span> Flatten, Dense, Lambda, Cropping2D, Dropout</span><br><span class="line"><span class="keyword">from</span> keras.layers.convolutional <span class="keyword">import</span> Convolution2D</span><br><span class="line"></span><br><span class="line">model = Sequential()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 图像预处理--归一化并对图像进行裁剪。</span></span><br><span class="line">model.add(Lambda(<span class="keyword">lambda</span> x: x / <span class="number">255.0</span> - <span class="number">0.5</span>, input_shape=(<span class="number">160</span>, <span class="number">320</span>, <span class="number">3</span>)))</span><br><span class="line">model.add(Cropping2D(cropping=((<span class="number">70</span>, <span class="number">25</span>), (<span class="number">0</span>, <span class="number">0</span>))))</span><br><span class="line"></span><br><span class="line"><span class="comment"># End to End Learning Model for Self-Driving Cars</span></span><br><span class="line">model.add(Convolution2D(<span class="number">24</span>, <span class="number">5</span>, <span class="number">5</span>, subsample=(<span class="number">2</span>, <span class="number">2</span>), activation=<span class="string">"relu"</span>))</span><br><span class="line">model.add(Dropout(<span class="number">0.7</span>))</span><br><span class="line">model.add(Convolution2D(<span class="number">36</span>, <span class="number">5</span>, <span class="number">5</span>, subsample=(<span class="number">2</span>, <span class="number">2</span>), activation=<span class="string">"relu"</span>))</span><br><span class="line">model.add(Convolution2D(<span class="number">48</span>, <span class="number">5</span>, <span class="number">5</span>, subsample=(<span class="number">2</span>, <span class="number">2</span>), activation=<span class="string">"relu"</span>))</span><br><span class="line">model.add(Convolution2D(<span class="number">64</span>, <span class="number">3</span>, <span class="number">3</span>, activation=<span class="string">"relu"</span>))</span><br><span class="line">model.add(Convolution2D(<span class="number">64</span>, <span class="number">3</span>, <span class="number">3</span>, activation=<span class="string">"relu"</span>))</span><br><span class="line">model.add(Dropout(<span class="number">0.8</span>))</span><br><span class="line">model.add(Flatten())</span><br><span class="line">model.add(Dense(<span class="number">100</span>))</span><br><span class="line">model.add(Dense(<span class="number">50</span>))</span><br><span class="line">model.add(Dense(<span class="number">10</span>))</span><br><span class="line">model.add(Dense(<span class="number">1</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 模型训练及保存</span></span><br><span class="line">model.compile(loss=<span class="string">'mse'</span>, optimizer=<span class="string">'adam'</span>)</span><br><span class="line">model.fit(X_train, y_train, validation_split=<span class="number">0.2</span>, shuffle=<span class="keyword">True</span>, nb_epoch=<span class="number">10</span>, verbose=<span class="number">1</span>)</span><br><span class="line">model.save(<span class="string">'model.h5'</span>)</span><br></pre></td></tr></table></figure></p>
+<h3 id="实现效果"><a href="#实现效果" class="headerlink" title="实现效果"></a>实现效果</h3><pre><code>python model.py  # 对模型进行训练
+</code></pre><p>　　通过matplotlib可视化误差可以看到，训练数据和验证数据的误差随着迭代次数不断减小。<br><img src="/行为克隆/4.PNG" title="matplotlib可视化误差"></p>
+<pre><code>python drive.py model.h5 run1  # 对模型进行测试
+</code></pre><p>　　进入无人车模拟器的Autonoumous Mode后，我们的Anaconda  Prompt终端会与模拟器通过 <a href="http://0.0.0.0:4567" target="_blank" rel="noopener">http://0.0.0.0:4567</a> 连接起来，之后无人车就开启自动驾驶了，效果如下：</p>
+<video src="self_driving_car_nanodegree_program 2018_9_24 13_54_30.mp4" type="video/mp4" controls="controls" width="100%" height="100%"><br></video>
+
+<pre><code>python video.py run1  # 可以制作run1.mp4视频保存实验结果
+</code></pre><p>　　哈哈，这样就大功告成啦，可以看到这个project虽然难度不大，但是趣味十足，工程类的课程要都这么玩就有趣多了！当然这里只完成了track1跑道，track2跑道按理说依样画葫芦即可，但是作为教练的我都开不好，实在是有点坑无人车啊！</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:</strong>
+    hewangxing
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link:</strong>
+    <a href="http://hewangxing.gitee.io/行为克隆/" title="行为克隆">http://hewangxing.gitee.io/行为克隆/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice: </strong>
+    All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> unless stating additionally.
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/python/" rel="tag"># python</a>
+          
+            <a href="/tags/无人驾驶/" rel="tag"># 无人驾驶</a>
+          
+            <a href="/tags/CNN/" rel="tag"># CNN</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/无稽之谈/" rel="next" title="无稽之谈">
+                <i class="fa fa-chevron-left"></i> 无稽之谈
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar1.jpg"
+                alt="hewangxing" />
+            
+              <p class="site-author-name" itemprop="name">hewangxing</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+			  
+			  
+			  <div class="site-state-item site-state-categories">
+				
+				  <a href="/categories/index.html">
+				
+				  <span class="site-state-item-count">6</span>
+				  <span class="site-state-item-name">categories</span>
+				</a>
+			  </div>
+			
+
+			
+			  
+			  
+			  <div class="site-state-item site-state-tags">
+				
+				  <a href="/tags/index.html">
+				
+				  <span class="site-state-item-count">14</span>
+				  <span class="site-state-item-name">tags</span>
+				</a>
+			  </div>
+			
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/hewangxing" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:xingyes99@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.zhihu.com/people/he-wang-xing-32" target="_blank" title="知乎">
+                      
+                        <i class="fa fa-fw fa-zhihu"></i>知乎</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://blog.csdn.net/hewangxing" target="_blank" title="CSDN">
+                      
+                        <i class="fa fa-fw fa-csdn"></i>CSDN</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://gabriel1225.github.io/" title="Gabriel's Blog" target="_blank">Gabriel's Blog</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#介绍"><span class="nav-number">1.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#任务要求"><span class="nav-number">2.</span> <span class="nav-text">任务要求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#准备工作"><span class="nav-number">3.</span> <span class="nav-text">准备工作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#采集数据"><span class="nav-number">4.</span> <span class="nav-text">采集数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#加载数据"><span class="nav-number">5.</span> <span class="nav-text">加载数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#搭建模型"><span class="nav-number">6.</span> <span class="nav-text">搭建模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实现效果"><span class="nav-number">7.</span> <span class="nav-text">实现效果</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">hewangxing</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i> Visitor
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> Total Visit
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+<!-- LOCAL: You can save these files to your site and update links -->
+    
+        
+        <link rel="stylesheet" href="https://aimingoo.github.io/gitmint/style/default.css">
+        <script src="https://aimingoo.github.io/gitmint/dist/gitmint.browser.js"></script>
+    
+<!-- END LOCAL -->
+
+    
+
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitmint({
+            id: decodeURI(window.location.pathname), 
+            owner: 'hewangxing',
+            repo: 'gitment-comments',
+            
+            lang: "" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
+            
+            oauth: {
+            
+            
+                client_secret: '501b23c63d93d17a104f5889a63503b84ca93a0b',
+            
+                client_id: 'af72ab3d4386526834fc'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      renderGitment();
+      
+      </script>
+    
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://www.gstatic.com/firebasejs/4.6.0/firebase.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/4.6.0/firebase-firestore.js"></script>
+  
+  <script>
+    (function () {
+
+      firebase.initializeApp({
+        apiKey: '',
+        projectId: ''
+      })
+
+      function getCount(doc, increaseCount) {
+        //increaseCount will be false when not in article page
+
+        return doc.get().then(function (d) {
+          var count
+          if (!d.exists) { //has no data, initialize count
+            if (increaseCount) {
+              doc.set({
+                count: 1
+              })
+              count = 1
+            }
+            else {
+              count = 0
+            }
+          }
+          else { //has data
+            count = d.data().count
+            if (increaseCount) {
+              if (!(window.localStorage && window.localStorage.getItem(title))) { //if first view this article
+                doc.set({ //increase count
+                  count: count + 1
+                })
+                count++
+              }
+            }
+          }
+          if (window.localStorage && increaseCount) { //mark as visited
+            localStorage.setItem(title, true)
+          }
+
+          return count
+        })
+      }
+
+      function appendCountTo(el) {
+        return function (count) {
+          $(el).append(
+            $('<span>').addClass('post-visitors-count').append(
+              $('<span>').addClass('post-meta-divider').text('|')
+            ).append(
+              $('<span>').addClass('post-meta-item-icon').append(
+                $('<i>').addClass('fa fa-users')
+              )
+              ).append($('<span>').text('Visitors ' + count))
+          )
+        }
+      }
+
+      var db = firebase.firestore()
+      var articles = db.collection('articles')
+
+      //https://hexo.io/zh-tw/docs/variables.html
+      var isPost = '行为克隆'.length > 0
+      var isArchive = '' === 'true'
+      var isCategory = ''.length > 0
+      var isTag = ''.length > 0
+
+      if (isPost) { //is article page
+        var title = '行为克隆'
+        var doc = articles.doc(title)
+
+        getCount(doc, true).then(appendCountTo($('.post-meta')))
+      }
+      else if (!isArchive && !isCategory && !isTag) { //is index page
+        var titles = [] //array to titles
+
+        var postsstr = '' //if you have a better way to get titles of posts, please change it
+        eval(postsstr)
+
+        var promises = titles.map(function (title) {
+          return articles.doc(title)
+        }).map(function (doc) {
+          return getCount(doc)
+        })
+        Promise.all(promises).then(function (counts) {
+          var metas = $('.post-meta')
+          counts.forEach(function (val, idx) {
+            appendCountTo(metas[idx])(val)
+          })
+        })
+      }
+    })()
+  </script>
+
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+  
+
+
+  
+
+  
+
+</body>
+</html>
